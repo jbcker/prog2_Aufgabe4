@@ -17,33 +17,33 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
     }
 
     @Override
-    public void addAll(FrequencyTable fq) {
+    public void addAll(FrequencyTable<T> fq) {
         // Ihr Code:
         for (int i = 0; i < fq.size(); i++) { //addiert das übergebene Array zu diesem hinzu
-            this.add(fq.get(i).getWord(),fq.get(i).getFrequency());
+            this.add((T) fq.get(i).getWord(),fq.get(i).getFrequency());
         }
     }
 
     @Override
-    public void collectMostFrequent(FrequencyTable fq) {    //fügt alle Wörter mit höchster anzahl hinzu
+    public void collectMostFrequent(FrequencyTable<T> fq) {    //fügt alle Wörter mit höchster anzahl hinzu
         // Ihr Code:
         fq.clear();
         int check = this.get(0).getFrequency();   //speichert höchste Zahl
         int i = 0;
         while(check == this.get(i).getFrequency()) {
-            fq.add(this.get(i).getWord(),this.get(i).getFrequency());
+            fq.add((T) this.get(i).getWord(),this.get(i).getFrequency());
             i++;
         }
     }
 
     @Override
-    public void collectLeastFrequent(FrequencyTable fq) {
+    public void collectLeastFrequent(FrequencyTable<T> fq) {
         // Ihr Code:
         fq.clear();
         int check = this.get(size()-1).getFrequency();   //speichert niedrigste Zahl
         int i = size()-1;
         while(check == this.get(i).getFrequency()) {
-            fq.add(this.get(i).getWord(),this.get(i).getFrequency());
+            fq.add((T) this.get(i).getWord(),this.get(i).getFrequency());
             i--;
         }
     }

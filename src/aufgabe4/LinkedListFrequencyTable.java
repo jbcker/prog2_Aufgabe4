@@ -11,9 +11,9 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     static class Node {
         Node next;
         Node prev;
-        Word data;
+        Word<?> data;
 
-        public Node(Word data, Node n, Node p) {
+        public Node(Word<?> data, Node n, Node p) {
             this.data = data;
             this.next = n;
             this.prev = p;
@@ -69,7 +69,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
         }
     }
 
-    private void addAt(Node at, Word w) {
+    private void addAt(Node at, Word<?> w) {
         if (at == head) {
             throw new RuntimeException("bist du dumm?");
         }
@@ -86,7 +86,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     }
 
     @Override
-    public Word get(int pos) {
+    public Word<?> get(int pos) {
         if (pos < 0 || pos > size)
             throw new RuntimeException("des goht do ned");
         int i = 0;

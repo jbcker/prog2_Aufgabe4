@@ -5,7 +5,7 @@ package aufgabe4;
  * @author oliverbittel
  * @since 12.2.2020
  */
-public interface FrequencyTable {
+public interface FrequencyTable<T> {
     /**
      * Liefert die Anzahl der W&ouml;rter in dieser Tabelle zur&uuml;ck.
      * @return Anzahl der H&auml;ufigkeitseintr&auml;ge.
@@ -42,11 +42,11 @@ public interface FrequencyTable {
 
     /**
      * F&uuml;gt alle W&ouml;rter mit ihren H&auml;ufigkeiten aus fq zu dieser Tabelle dazu.
-     * H&auml;ufigkeiten fÃ¼r gleiche W&ouml;rter werden addiert.
+     * H&auml;ufigkeiten fu&uumlr gleiche W&ouml;rter werden addiert.
      * fq bleibt unver&auml;ndert.
      * @param fq H&auml;ufigkeitstabelle.
      */
-    void addAll(FrequencyTable fq);
+    void addAll(FrequencyTable<T> fq);
 
     /**
      * Liefert das Wort mit seiner HÃ¤ufigkeit zur&uuml;ck, das mit seiner H&auml;ufigkeit an Position pos steht.
@@ -74,11 +74,11 @@ public interface FrequencyTable {
      * tab2 = {"ein":3, "das":3}.
      * @param fq H&auml;ufigkeitstabelle.
      */
-    void collectMostFrequent(FrequencyTable fq);
+    void collectMostFrequent(FrequencyTable<T> fq);
 
     /**
      * Sammelt alle W&ouml;rter mit der H&auml;ufigkeit 1 und speichert sie in fq.
      * @param fq H&auml;ufigkeitstabelle.
      */
-    void collectLeastFrequent(FrequencyTable fq);
+    void collectLeastFrequent(FrequencyTable<T> fq);
 }

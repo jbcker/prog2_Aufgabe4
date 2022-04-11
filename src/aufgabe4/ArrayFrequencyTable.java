@@ -8,8 +8,7 @@ import java.util.Arrays;
  */
 public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private int size;
-    private Word fqTable[];
-    private final int DEFAULT_SIZE = 100;
+    private Word<T>[] fqTable;
 
     public ArrayFrequencyTable() {
         clear();
@@ -31,7 +30,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         // Ihr Code:
         // ...
         size = 0;
-        fqTable = new Word[DEFAULT_SIZE];
+        fqTable = new Word[100];
     }
 
     @Override
@@ -71,7 +70,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
 
     @Override
-    public Word get(int pos) {
+    public Word<?> get(int pos) {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
