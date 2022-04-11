@@ -5,8 +5,8 @@ package aufgabe4;
  * @author oliverbittel
  * @since 22.3.2019
  */
-public class Word {
-    final private String word;
+public class Word<T> {
+    final private T word;
     private int freqency;
 
     /**
@@ -14,7 +14,7 @@ public class Word {
      * @param word Wort
      * @param f H&auml;ufgkeit
      */
-    public Word(String word, int f) {
+    public Word(T word, int f) {
         this.word = word;
         this.freqency = f;
     }
@@ -23,7 +23,7 @@ public class Word {
      * Liefert Wort zur&uuml;ck.
      * @return Wort
      */
-    public String getWord() {
+    public T getWord() {
         return word;
     }
 

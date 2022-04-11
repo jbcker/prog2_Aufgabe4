@@ -30,7 +30,7 @@ public interface FrequencyTable {
      * @param w Wort.
      * @param f H&auml;ufigkeit.
      */
-    void add(String w, int f);
+    void add(T w, int f);
 
     /**
      * F&uuml;gt das Wort w mit der H&auml;ufigkeit 1 zu dieser Tabelle dazu.
@@ -38,7 +38,7 @@ public interface FrequencyTable {
      * wird die H&auml;ufigkeit um 1 erhÃ¶ht.
      * @param w Wort.
      */
-    void add(String w);
+    void add(T w);
 
     /**
      * F&uuml;gt alle W&ouml;rter mit ihren H&auml;ufigkeiten aus fq zu dieser Tabelle dazu.

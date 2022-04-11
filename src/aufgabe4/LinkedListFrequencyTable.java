@@ -1,6 +1,6 @@
 package aufgabe4;
 
-public class LinkedListFrequencyTable extends AbstractFrequencyTable {
+public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private int size;
     Node head, end;
 
@@ -34,7 +34,7 @@ public class LinkedListFrequencyTable extends AbstractFrequencyTable {
     }
 
     @Override
-    public void add(String w, int f) {
+    public void add(T w, int f) {
         if (size == 0) {
             addAt(end, new Word(w, f));
             size++;

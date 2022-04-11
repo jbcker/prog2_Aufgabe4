@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author oliverbittel
  * @since 25.03.2021
  */
-public class ArrayFrequencyTable extends AbstractFrequencyTable {
+public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private int size;
     private Word fqTable[];
     private final int DEFAULT_SIZE = 100;
@@ -35,7 +35,7 @@ public class ArrayFrequencyTable extends AbstractFrequencyTable {
     }
 
     @Override
-    public void add(String w, int f) {
+    public void add(T w, int f) {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
