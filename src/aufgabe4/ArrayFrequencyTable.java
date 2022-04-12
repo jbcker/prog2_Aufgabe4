@@ -79,7 +79,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
     }
 
     @Override
-    public int get(String w) {
+    public int get(T w) {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:

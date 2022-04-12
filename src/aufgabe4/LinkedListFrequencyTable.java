@@ -100,7 +100,7 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     }
 
     @Override
-    public int get(String w) {
+    public int get(T w) {
         for (Node temp = head.next; temp.next != null; temp = temp.next) {
             if (temp.data.getWord().equals(w)) {
                 return temp.data.getFrequency();

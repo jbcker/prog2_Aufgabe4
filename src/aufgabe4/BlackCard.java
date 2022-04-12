@@ -1,30 +1,13 @@
 package aufgabe4;
 
-public class BlackCard<T> extends Card<T> {
-    int size;
+public class BlackCard extends Card {
+    String Suit;
+    String Rank;
 
-    @Override
-    public int size() {
-        return this.size;
-    }
+    public BlackCard() { }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public void add(Object w, int f) {
-
-    }
-
-    @Override
-    public Word get(int pos) {
-        return null;
+    public BlackCard(String Suit, String Rank) {
+        this.Suit = Suit;
+        this.Rank = Rank;
     }
 }
