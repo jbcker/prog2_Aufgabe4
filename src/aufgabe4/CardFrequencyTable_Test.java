@@ -18,8 +18,8 @@ public class CardFrequencyTable_Test {
 
 		// Beachte:
 		// Evtl. wird bei Ihnen die rite Karte "sieben Herz" anders definiert.
-		redCardTab.add(new RedCard(Card.Suit.HEARTS, Card.Rank.SEVEN));	
-		System.out.println(redCardTab.get(new RedCard(Card.Suit.HEARTS, Card.Rank.SEVEN))); // sollte die Häufigkeit 1 ergeben
+		redCardTab.add(new RedCard(Card.HEARTS, Card.SEVEN));
+		System.out.println(redCardTab.get(new RedCard(Card.HEARTS, Card.SEVEN))); // sollte die Häufigkeit 1 ergeben
 		
 		Random rand = new Random();
 		for (int i = 0; i < 400; i++) {

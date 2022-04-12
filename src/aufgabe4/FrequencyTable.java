@@ -64,7 +64,7 @@ public interface FrequencyTable<T> {
      * @param w Wort
      * @return H&auml;ufigkeit.
      */
-    int get(String w);
+    int get(T w);
 
     /**
      * Sammelt alle W&ouml;rter mit der gr&ouml;ssten H&auml;ufigkeit und speichert sie in fq.
