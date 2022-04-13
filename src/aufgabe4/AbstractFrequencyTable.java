@@ -1,7 +1,6 @@
 package aufgabe4;
 
 /**
- *
  * @author oliverbittel
  * @since 22.2.2019
  */
@@ -20,7 +19,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
     public void addAll(FrequencyTable<? extends T> fq) {
         // Ihr Code:
         for (int i = 0; i < fq.size(); i++) { //addiert das übergebene Array zu diesem hinzu
-            this.add(fq.get(i).getWord(),fq.get(i).getFrequency());
+            this.add(fq.get(i).getWord(), fq.get(i).getFrequency());
         }
     }
 
@@ -30,8 +29,8 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
         fq.clear();
         int check = this.get(0).getFrequency();   //speichert höchste Zahl
         int i = 0;
-        while(check == this.get(i).getFrequency()) {
-            fq.add(this.get(i).getWord(),this.get(i).getFrequency());
+        while (check == this.get(i).getFrequency()) {
+            fq.add(this.get(i).getWord(), this.get(i).getFrequency());
             i++;
         }
     }
@@ -40,16 +39,17 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
     public void collectLeastFrequent(FrequencyTable<? super T> fq) {
         // Ihr Code:
         fq.clear();
-        int check = this.get(size()-1).getFrequency();   //speichert niedrigste Zahl
-        int i = size()-1;
-        while(check == this.get(i).getFrequency()) {
-            fq.add(this.get(i).getWord(),this.get(i).getFrequency());
+        int check = this.get(size() - 1).getFrequency();   //speichert niedrigste Zahl
+        int i = size() - 1;
+        while (check == this.get(i).getFrequency()) {
+            fq.add(this.get(i).getWord(), this.get(i).getFrequency());
             i--;
         }
     }
 
     /**
      * Liefert eine String-Darstellung zur&uuml;ck.
+     *
      * @return String-Darstellung.
      */
     @Override
@@ -57,7 +57,7 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
         StringBuilder s = new StringBuilder("");
         // Ihr Code:
         s.append("{");
-        for (int i = 0; i < this.size(); i++){ // fügt Wörter der Ausgabe hinzu
+        for (int i = 0; i < this.size(); i++) { // fügt Wörter der Ausgabe hinzu
             s.append(this.get(i));
             s.append(", ");
         }

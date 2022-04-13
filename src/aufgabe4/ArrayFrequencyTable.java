@@ -57,18 +57,18 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private void movetoleft(int pos) {
         if(pos==0)
             return;
-        Element w= fqTable[pos];
+        Element<T> w= fqTable[pos];
         int i = pos-1;
         while(i>= 0 && w.getFrequency() > fqTable[i].getFrequency()){
             fqTable[i+1]=fqTable[i];
             i--;
         }
-        fqTable[i+1]=w;
+        fqTable[i+1]= w;
     }
 
 
     @Override
-    public Element get(int pos) {
+    public Element<T> get(int pos) {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
