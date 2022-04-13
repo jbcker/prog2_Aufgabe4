@@ -52,7 +52,7 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
             }
         }
          // fügt ein neues Wort mit seiner Anzahl hinzu
-            this.fqTable[size++] = new Word(w, f);
+            this.fqTable[size++] = new Element<>(w, f);
             this.movetoleft(size-1);
     }
 

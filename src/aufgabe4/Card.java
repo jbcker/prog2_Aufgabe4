@@ -1,8 +1,13 @@
 package aufgabe4;
 
+import java.util.Objects;
+
 public abstract class Card {
+    String Suit;
+    String Rank;
+
     public final static String HEARTS = "Herz";
-    public final static String PIC = "Pic";
+    public final static String PIQUE = "Pique";
     public final static String KARO = "Karo";
     public final static String KREUZ = "Kreuz";
 
@@ -15,8 +20,10 @@ public abstract class Card {
     public final static String KING = "König";
     public final static String ACE = "Ass";
 
-    public static String[] Suit = {HEARTS, PIC, KARO, KREUZ};
-    public static String[] Rank = {SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING, ACE};
+    public static String[] Suits = {HEARTS, PIQUE, KARO, KREUZ};
+    public static String[] SuitsRed = {HEARTS, KARO};
+    public static String[] SuitsBlack = {PIQUE, KREUZ};
+    public static String[] Ranks = {SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING, ACE};
 
     public int get(String w) {
         return 0;
