@@ -5,6 +5,7 @@ public abstract class Card {
     public final static String PIC = "Pic";
     public final static String KARO = "Karo";
     public final static String KREUZ = "Kreuz";
+
     public final static String SEVEN = "7";
     public final static String EIGHT = "8";
     public final static String NINE = "9";
@@ -22,7 +23,19 @@ public abstract class Card {
     }
     @Override
     public String toString() {
-        return null;
+        return Suit + " " + Rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card card)) return false;
+        return Suit.equals(card.Suit) && Rank.equals(card.Rank);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Suit, Rank);
     }
 
     public Boolean equals() {

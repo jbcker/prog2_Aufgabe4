@@ -5,7 +5,7 @@ package aufgabe4;
  * @author oliverbittel
  * @since 22.3.2019
  */
-public class Word<T> {
+public class Element<T> {
     final private T word;
     private int freqency;
 
@@ -14,7 +14,7 @@ public class Word<T> {
      * @param word Wort
      * @param f H&auml;ufgkeit
      */
-    public Word(T word, int f) {
+    public Element(T word, int f) {
         this.word = word;
         this.freqency = f;
     }

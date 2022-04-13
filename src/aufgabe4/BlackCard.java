@@ -1,8 +1,6 @@
 package aufgabe4;
 
 public class BlackCard extends Card {
-    String Suit;
-    String Rank;
 
     public BlackCard() { }
 

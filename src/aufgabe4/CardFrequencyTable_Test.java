@@ -43,7 +43,7 @@ public class CardFrequencyTable_Test {
 		redCardTab.addAll(redCardTab);
 		System.out.println(redCardTab);
 		cardTab1.collectMostFrequent(cardTab2);
-		//cardTab1.collectMostFrequent(redCardTab); // nicht OK	
+		//cardTab1.collectMostFrequent(redCardTab); // nicht OK
 		redCardTab.collectMostFrequent(cardTab1);
 	}
 }
