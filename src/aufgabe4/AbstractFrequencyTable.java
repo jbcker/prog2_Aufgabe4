@@ -65,3 +65,4 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
         return s.toString();
     }
 }
+

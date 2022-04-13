@@ -19,7 +19,6 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
-        // ...
         return this.size;
     }
 
@@ -28,7 +27,6 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
-        // ...
         size = 0;
         fqTable = new Element[100];
     }
@@ -90,5 +88,21 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
         }
         return 0;
+    }
+    public Iterable<T> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterable<T>{
+
+        public boolean hasNext() {
+            return false;
+        }
+        public T next() {
+            return null;
+        }
+        public void remove() {
+
+        }
     }
 }
