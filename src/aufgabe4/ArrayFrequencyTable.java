@@ -1,12 +1,15 @@
 package aufgabe4;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.NoSuchElementException;
 
 /**
  * @author oliverbittel
  * @since 25.03.2021
  */
 public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
+    private int modCount = 0;
     private int size;
     private Element<T>[] fqTable;
 
@@ -85,24 +88,32 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         for (int i = 0; i < this.size; i++) { // fügt Wörter der Ausgabe hinzu
             if (this.fqTable[i].getWord().equals(w))
                 return this.fqTable[i].getFrequency();
-
         }
         return 0;
     }
     public Iterable<T> iterator() {
-        return new LinkedListIterator();
+        return new ArrayListIterator();
     }
 
-    private class LinkedListIterator implements Iterable<T>{
+    private class ArrayListIterator<T> implements Iterable<T> {
+        private Element<?> current = fqTable[0];
+        private final int expectedMod = modCount;
 
         public boolean hasNext() {
-            return false;
+            return this.current != null;
         }
-        public T next() {
-            return null;
-        }
-        public void remove() {
 
+        public T next() {
+            if(expectedMod != modCount)
+                throw new ConcurrentModificationException();
+            if (!hasNext())
+                throw new NoSuchElementException();
+            current = fqTable[current.getFrequency()-1];
+            return (T) current.getWord();
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException("Des gibts ned!");
         }
     }
 }
