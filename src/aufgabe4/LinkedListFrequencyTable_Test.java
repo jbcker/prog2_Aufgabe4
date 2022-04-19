@@ -95,7 +95,6 @@ public class LinkedListFrequencyTable_Test {
                 break;
             System.out.println(tab.get(i));
         }
-
         System.out.println("\nBenötigte Zeit in msec: " + elapsedTime);
     }
 }
