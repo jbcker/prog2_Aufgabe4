@@ -2,6 +2,7 @@ package aufgabe4;
 
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -34,39 +35,48 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         fqTable = new Element[100];
     }
 
-    @Override
     public void add(T w, int f) {
         // throw muss noch auskommentiert werden!
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
         // ...
-        if(this.size() >= this.fqTable.length) {
-            this.fqTable = Arrays.copyOf(fqTable, size*2); //verdoppelt die länge das Arrays, falls es voll ist
+        if (this.size() >= this.fqTable.length) {
+            this.fqTable = Arrays.copyOf(fqTable, size * 2); //verdoppelt die länge das Arrays, falls es voll ist
         }
-        int index;
-        for (int i = 0; i < this.size; i++) { // überprüft, ob das Wort schon vorhanden ist
-            if (this.fqTable[i].getWord().equals(w)) {
-                index = i;
-                this.fqTable[index].addFrequency(f);
+//        int index;
+//        for (int i = 0; i < this.size; i++) { // überprüft, ob das Wort schon vorhanden ist
+//            if (this.fqTable[i].getWord().equals(w)) {
+//                index = i;
+//                this.fqTable[index].addFrequency(f);
+//                this.movetoleft(index);
+//                return;
+//            }
+//        }
+        int index = -1;
+        for (var x : fqTable) {
+            index++;
+            if (x != null && x.getWord().equals(w)) {
+                x.addFrequency(f);
                 this.movetoleft(index);
                 return;
             }
         }
-         // fügt ein neues Wort mit seiner Anzahl hinzu
-            this.fqTable[size++] = new Element<>(w, f);
-            this.movetoleft(size-1);
+
+        // fügt ein neues Wort mit seiner Anzahl hinzu
+        this.fqTable[size++] = new Element<>(w, f);
+        this.movetoleft(size - 1);
     }
 
     private void movetoleft(int pos) {
-        if(pos==0)
+        if (pos == 0)
             return;
-        Element<T> w= fqTable[pos];
-        int i = pos-1;
-        while(i>= 0 && w.getFrequency() > fqTable[i].getFrequency()){
-            fqTable[i+1]=fqTable[i];
+        Element<T> w = fqTable[pos];
+        int i = pos - 1;
+        while (i >= 0 && w.getFrequency() > fqTable[i].getFrequency()) {
+            fqTable[i + 1] = fqTable[i];
             i--;
         }
-        fqTable[i+1]= w;
+        fqTable[i + 1] = w;
     }
 
 
@@ -85,17 +95,22 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // Ihr Code:
         // ...
-        for (int i = 0; i < this.size; i++) { // fügt Wörter der Ausgabe hinzu
-            if (this.fqTable[i].getWord().equals(w))
-                return this.fqTable[i].getFrequency();
+//        for (int i = 0; i < this.size; i++) { // fügt Wörter der Ausgabe hinzu
+//            if (this.fqTable[i].getWord().equals(w))
+//                return this.fqTable[i].getFrequency();
+//        }
+        for(var x: fqTable){
+            if(x != null && x.getWord().equals(w))
+                return x.getFrequency();
         }
         return 0;
     }
-    public Iterable<T> iterator() {
+
+    public Iterator iterator() {
         return new ArrayListIterator();
     }
 
-    private class ArrayListIterator<T> implements Iterable<T> {
+    private class ArrayListIterator<T> implements Iterator {
         private Element<?> current = fqTable[0];
         private final int expectedMod = modCount;
 
@@ -104,11 +119,11 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
         }
 
         public T next() {
-            if(expectedMod != modCount)
+            if (expectedMod != modCount)
                 throw new ConcurrentModificationException();
             if (!hasNext())
                 throw new NoSuchElementException();
-            current = fqTable[current.getFrequency()-1];
+            current = fqTable[current.getFrequency() - 1];
             return (T) current.getWord();
         }
 

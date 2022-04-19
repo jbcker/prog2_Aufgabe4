@@ -25,6 +25,7 @@ public abstract class Card {
     public static String[] SuitsBlack = {PIQUE, KREUZ};
     public static String[] Ranks = {SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING, ACE};
 
+
     public int get(String w) {
         return 0;
     }
