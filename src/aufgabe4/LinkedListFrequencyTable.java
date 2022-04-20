@@ -1,13 +1,11 @@
 package aufgabe4;
 
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
     private int size;
     Node<?> head, end;
-    int modCount = 0;
 
     public LinkedListFrequencyTable() {
         clear();
@@ -38,12 +36,10 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
         head = new Node<>(null, null, null);
         end = new Node<>(null, null, head);
         head.next = end;
-        modCount++;
     }
 
     @Override
     public void add(T w, int f) {
-        modCount++;
         if (size == 0) {
             addAt(end, new Element<>(w, f));
             size++;
@@ -125,15 +121,12 @@ public class LinkedListFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
     private class LinkedListIterator implements Iterator<T> {
         private Node<?> current = head;
-        private final int expectedMod = modCount;
 
         public boolean hasNext() {
-            return this.current.next != null;
+            return current.next != null;
         }
 
         public T next() {
-            if (expectedMod != modCount)
-                throw new ConcurrentModificationException();
             if (!hasNext())
                 throw new NoSuchElementException();
             current = current.next;

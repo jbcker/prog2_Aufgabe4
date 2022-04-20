@@ -17,15 +17,22 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
     @Override
     public void addAll(FrequencyTable<? extends T> fq) {
-        // Ihr Code:
-        for (int i = 0; i < fq.size(); i++) { //addiert das übergebene Array zu diesem hinzu
-            this.add(fq.get(i).getWord(), fq.get(i).getFrequency());
+        //addiert das übergebene Array zu diesem hinzu
+//        for (int i = 0; i < fq.size(); i++) {
+//            this.add(fq.get(i).getWord(), fq.get(i).getFrequency());
+//        }
+        int i = -1;
+        for (T x: fq) {
+            i++;
+            //this.add(fq.get(i).getWord(), fq.get(i).getFrequency());
+            Element<T> a = (Element<T>) x;
+            this.add(a.getWord(), a.getFrequency());
         }
     }
 
     @Override
-    public void collectMostFrequent(FrequencyTable<? super T> fq) {    //fügt alle Wörter mit höchster anzahl hinzu
-        // Ihr Code:
+    public void collectMostFrequent(FrequencyTable<? super T> fq) {
+        //fügt alle Wörter mit höchster anzahl hinzu
         fq.clear();
         int check = this.get(0).getFrequency();   //speichert höchste Zahl
         int i = 0;
@@ -37,7 +44,6 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
 
     @Override
     public void collectLeastFrequent(FrequencyTable<? super T> fq) {
-        // Ihr Code:
         fq.clear();
         int check = this.get(size() - 1).getFrequency();   //speichert niedrigste Zahl
         int i = size() - 1;
@@ -55,7 +61,6 @@ public abstract class AbstractFrequencyTable<T> implements FrequencyTable<T> {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder("");
-        // Ihr Code:
         s.append("{");
         for (int i = 0; i < this.size(); i++) { // fügt Wörter der Ausgabe hinzu
             s.append(this.get(i));

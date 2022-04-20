@@ -1,7 +1,6 @@
 package aufgabe4;
 
 import java.util.Arrays;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -10,7 +9,6 @@ import java.util.NoSuchElementException;
  * @since 25.03.2021
  */
 public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
-    private int modCount = 0;
     private int size;
     private Element<T>[] fqTable;
 
@@ -20,26 +18,16 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
     @Override
     public int size() {
-        // throw muss noch auskommentiert werden!
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // Ihr Code:
         return this.size;
     }
 
     @Override
     public final void clear() {
-        // throw muss noch auskommentiert werden!
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // Ihr Code:
         size = 0;
         fqTable = new Element[100];
     }
 
     public void add(T w, int f) {
-        // throw muss noch auskommentiert werden!
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // Ihr Code:
-        // ...
         if (this.size() >= this.fqTable.length) {
             this.fqTable = Arrays.copyOf(fqTable, size * 2); //verdoppelt die länge das Arrays, falls es voll ist
         }
@@ -61,7 +49,6 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
                 return;
             }
         }
-
         // fügt ein neues Wort mit seiner Anzahl hinzu
         this.fqTable[size++] = new Element<>(w, f);
         this.movetoleft(size - 1);
@@ -82,49 +69,38 @@ public class ArrayFrequencyTable<T> extends AbstractFrequencyTable<T> {
 
     @Override
     public Element<T> get(int pos) {
-        // throw muss noch auskommentiert werden!
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // Ihr Code:
-        // ...
         return fqTable[pos];
     }
 
     @Override
     public int get(T w) {
-        // throw muss noch auskommentiert werden!
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // Ihr Code:
-        // ...
 //        for (int i = 0; i < this.size; i++) { // fügt Wörter der Ausgabe hinzu
 //            if (this.fqTable[i].getWord().equals(w))
 //                return this.fqTable[i].getFrequency();
 //        }
-        for(var x: fqTable){
-            if(x != null && x.getWord().equals(w))
+        for (var x : fqTable) {
+            if (x != null && x.getWord().equals(w))
                 return x.getFrequency();
         }
         return 0;
     }
 
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new ArrayListIterator();
     }
 
-    private class ArrayListIterator<T> implements Iterator {
-        private Element<?> current = fqTable[0];
-        private final int expectedMod = modCount;
+    private class ArrayListIterator implements Iterator<T> {
+        int current = -1;
 
         public boolean hasNext() {
-            return this.current != null;
+            return current <= size && fqTable[current + 1] != null;
         }
 
         public T next() {
-            if (expectedMod != modCount)
-                throw new ConcurrentModificationException();
-            if (!hasNext())
+            if (hasNext()) {
+                return (T) fqTable[++current];
+            } else
                 throw new NoSuchElementException();
-            current = fqTable[current.getFrequency() - 1];
-            return (T) current.getWord();
         }
 
         public void remove() {
